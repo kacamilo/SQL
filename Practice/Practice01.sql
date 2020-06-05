@@ -4,7 +4,7 @@
 “이름”, “월급”, “전화번호”, “입사일” 로 컬럼이름을 대체해 보세요
 */
 
-select first_name || last_name as "이름",
+select first_name || ' ' || last_name as "이름",
             salary "월급",
             phone_number "전화번호",
             hire_date "입사일"
@@ -28,9 +28,10 @@ select
             employee_id "직원 이름",
             manager_id "매니저 아이디",
             commission_pct "커미션 비율",
-            salary
+            salary "월급"
 from employees
-where salary > 3000;
+where salary > 3000
+and commission_pct is not null;
 
 /*
 문제4.
@@ -91,7 +92,7 @@ order by length (department_name) desc ;
 정확하지 않지만, 지사가 있을 것으로 예상되는 나라들을 나라이름을 대문자로 출력하고
 올림차순(ASC)으로 정렬해 보세오.
 */
-select  initcap(country_name)
+select  upper (country_name) "나라이름"
 from countries
 order by country_name asc;
 
@@ -107,6 +108,10 @@ replace (phone_number,'.','-') "전화번호",
             hire_date "입사일"
 from employees
 where hire_date < '03/12/31';
-//
+
+
+
+
+
 
 
